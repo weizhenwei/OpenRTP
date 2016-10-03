@@ -1,0 +1,32 @@
+OpenRTP Coding Conventions
+
+1. In general, OpenRTP code standard complies with Google C++ Style Guide.
+
+2. Try to use C++ 11 features such as nullptr, smart pointer, etc.
+
+3. class definition:
+    1) Class members defined with prefix m_, and with Hungarian notation, eg:
+    2) Public functions starts with Upper Initial, private functions starts
+       with Lower Initial. eg:
+        class Foo {
+        public:
+            Foo() : m_iAge(0), m_pName(nullptr) {}
+            ~Foo() {
+                if (m_pName) {
+                    delete m_pName;
+                    m_pName = nullptr;
+                }
+            }
+
+            int GetAge() { return m_iAge; }
+        private:
+            void addAge(int more) { m_iAge += more; }
+
+            int   m_iAge;
+            char *m_pName;
+        };
+
+4. for library api function, using gobal scope resolution operator '::', eg:
+    ::printf("Hello, world!\n");
+
+

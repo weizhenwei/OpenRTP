@@ -1,29 +1,51 @@
 # Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# *.slo
+# *.lo
+# *.o
+# *.obj
 
 # Precompiled Headers
-*.gch
-*.pch
+# *.gch
+# *.pch
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# *.so
+# *.dylib
+# *.dll
 
 # Fortran module files
-*.mod
-*.smod
+# *.mod
+# *.smod
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# *.lai
+# *.la
+# *.a
+# *.lib
 
 # Executables
-*.exe
-*.out
-*.app
+# *.exe
+# *.out
+# *.app
+
+# build-system files
+build/cmdline/*
+build/eclipse/*
+build/xcode/*
+
+# mac backup file
+.DS_Store
+
+# Eclipse CDT project file
+.cproject
+.project
+.settings/*
+
+# cscope and ctags file
+cscope.files
+cscope.out
+tags
+
+# ycm python bytecode
+.ycm_extra_conf.pyc
+
