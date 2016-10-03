@@ -35,7 +35,7 @@ endif()
 # main source files;
 # file(GLOB UNIVERSAL_FILES main/*.h main/*.cpp main/client/*.h main/client/*.cpp
 #     main/server/*.h main/server/*.cpp)
-file(GLOB UNIVERSAL_FILES main.h main.cpp)
+file(GLOB UNIVERSAL_FILES *.h *.cpp)
 add_executable(OpenRTP ${UNIVERSAL_FILES})
 
 # libraries
