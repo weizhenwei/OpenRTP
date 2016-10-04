@@ -21,7 +21,7 @@ endif()
 # include directory;
 # include_directories(${PROJECT_SOURCE_DIR}/src/include)
 # include_directories(${PROJECT_SOURCE_DIR}/src/capture)
-# include_directories(${PROJECT_SOURCE_DIR}/src/util)
+include_directories(${PROJECT_SOURCE_DIR}/src/util)
 # include_directories(${PROJECT_SOURCE_DIR}/src/main)
 
 if(LINUX_PLATFORM)
@@ -40,11 +40,11 @@ add_executable(OpenRTP ${UNIVERSAL_FILES})
 
 # libraries
 # add_subdirectory(capture)
-# add_subdirectory(util)
+add_subdirectory(util)
 # link_directories(${PROJECT_SOURCE_DIR}/src/capture)
-# link_directories(${PROJECT_SOURCE_DIR}/src/util)
+link_directories(${PROJECT_SOURCE_DIR}/src/util)
 # target_link_libraries(OpenRTP glog capture util pthread ${PLATFORM_LIB}) 
-target_link_libraries(OpenRTP glog pthread ${PLATFORM_LIB}) 
+target_link_libraries(OpenRTP glog util pthread ${PLATFORM_LIB}) 
 
 message(STATUS "Leaving directory ${CMAKE_CURRENT_SOURCE_DIR}")
 
