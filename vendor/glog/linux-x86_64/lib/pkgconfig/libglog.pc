@@ -1,4 +1,4 @@
-prefix=/home/wzw/softwares/glog/install
+prefix=/home/wzw/softwares/OpenRTP/vendor/glog/src-code/glog-0.3.4/install
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

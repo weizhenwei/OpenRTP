@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/wzw/softwares/glog/install/lib'
+libdir='/home/wzw/softwares/OpenRTP/vendor/glog/src-code/glog-0.3.4/install/lib'
