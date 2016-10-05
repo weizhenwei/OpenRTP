@@ -5,6 +5,8 @@ file(GLOB UNIVERSAL_FILES *.h *.cpp thread/*.h thread/*.cpp)
 set(ALL_FILES ${UNIVERSAL_FILES})
 
 # default is static library
+include_directories(${PROJECT_SOURCE_DIR}/src/util)
+link_directories(${PROJECT_SOURCE_DIR}/src/util)
 add_library(util SHARED ${ALL_FILES})
 set_target_properties(util PROPERTIES OUTPUT_NAME "util")
 target_link_libraries(util glog)

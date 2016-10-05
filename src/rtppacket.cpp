@@ -43,6 +43,14 @@
 #include <list>
 
 namespace openrtp {
+
+RtpPacket::RtpPacket() {
+    memset(&m_rtphdr, 0, sizeof(m_rtphdr));
+    memset(&m_rtphdr_ext, 0, sizeof(m_rtphdr_ext));
+    m_uPayloadLength = 0;
+    m_pPayload = nullptr;
+}
+
 RtpPacket::RtpPacket(bool has_padding, bool has_extension,
         uint8_t csrc_count, bool has_marker, uint8_t payload_type,
         uint16_t sequence_number, uint32_t timestamp, uint32_t ssrc,

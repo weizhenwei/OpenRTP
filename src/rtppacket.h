@@ -48,6 +48,7 @@ namespace openrtp {
 
 class RtpPacket {
 public:
+    RtpPacket();
     RtpPacket(bool has_padding, bool has_extension, uint8_t csrc_count,
             bool has_marker, uint8_t payload_type, uint16_t sequence_number,
             uint32_t timestamp, uint32_t ssrc, const std::list<uint32_t>& csrc);
@@ -58,6 +59,44 @@ public:
     void SetHeaderExtension(rtpheader_extension ext);
     void SetPayload(uint32_t payload_length, uint8_t *payload);
 
+    bool Has_padding() { return m_rtphdr.padding; }
+    void Set_padding(bool padding) { m_rtphdr.padding = padding; }
+
+    bool Has_extension() { return m_rtphdr.extension; }
+    void Set_extension(bool extension) { m_rtphdr.extension = extension; }
+
+    uint8_t CSRC_count() { return m_rtphdr.csrc_count; }
+    void Set_CSRC_count(uint8_t csrc_count) {
+        m_rtphdr.csrc_count = csrc_count;
+    }
+
+    std::list<uint32_t>& CSRC() { return m_rtphdr.csrc; }
+    void Set_CSRC(const std::list<uint32_t>& csrc) {
+        m_rtphdr.csrc = csrc;
+    }
+
+    bool Has_marker() { return m_rtphdr.marker; }
+    void Set_marker(bool marker) { m_rtphdr.marker = marker; }
+
+    uint8_t Payload_type() { return m_rtphdr.payload_type; }
+    void Set_payload_type(uint8_t payload_type) {
+        m_rtphdr.payload_type = payload_type;
+    }
+
+    uint16_t Sequence_number() { return m_rtphdr.sequence_number; }
+    void Set_sequence_number(uint16_t sequence_number) {
+        m_rtphdr.sequence_number = sequence_number;
+    }
+
+    uint32_t Timestamp() { return m_rtphdr.timestamp; }
+    void Set_timestamp(uint32_t timestamp) {
+        m_rtphdr.timestamp = timestamp;
+    }
+
+    uint32_t SSRC() { return m_rtphdr.ssrc; }
+    void Set_ssrc(uint32_t ssrc) {
+        m_rtphdr.ssrc = ssrc;
+    }
 
 private:
     rtpheader m_rtphdr;
