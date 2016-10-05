@@ -40,10 +40,8 @@ set_target_properties(openrtp PROPERTIES OUTPUT_NAME "openrtp")
 target_link_libraries(openrtp util)
 
 
-# main source files;
-file(GLOB UNIVERSAL_FILES main.h main.cpp)
-add_executable(OpenRTP ${UNIVERSAL_FILES})
-target_link_libraries(OpenRTP glog openrtp pthread ${PLATFORM_LIB}) 
+# example(main entry);
+add_subdirectory(example)
 
 message(STATUS "Leaving directory ${CMAKE_CURRENT_SOURCE_DIR}")
 

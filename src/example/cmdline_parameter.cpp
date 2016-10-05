@@ -51,7 +51,7 @@
 
 #include "glog/logging.h"
 
-#include "rtp_log.h"
+#include "util/rtp_log.h"
 
 
 namespace openrtp {

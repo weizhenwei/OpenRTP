@@ -1,10 +1,9 @@
 /*
  ============================================================================
- * Name        : main.h
+ * Name        : cmdline_parameter.h
  * Author      : weizhenwei, <weizhenwei1988@gmail.com>
- * Date        : 2016.10.03
+ * Date        : 2016.10.04
  *
- * Copyright   :
  * Copyright (c) 2016, weizhenwei
  * All rights reserved.
  *
@@ -33,17 +32,45 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Description : header file of main.h
+ * Description : header of cmdline parameter operation.
  ============================================================================
  */
 
-#ifndef SRC_MAIN_H
-#define SRC_MAIN_H
+#ifndef SRC_EXAMPLE_CMDLINE_PARAMETER_H
+#define SRC_EXAMPLE_CMDLINE_PARAMETER_H
+
+#include <string>
 
 namespace openrtp {
 
+class CmdlineParameter {
+public:
+    CmdlineParameter();
+    ~CmdlineParameter();
+
+    static CmdlineParameter* singleton();
+    void parseCmdlineParameter(int argc, char *argv[]);
+    void showHelp();
+    void showVersion();
+    void daemonize();
+    inline bool isValidParameter() {return m_bValidParameter;}
+    inline bool isShowHelp() {return m_bShowHelp;}
+    inline bool isShowVersion() {return m_bShowVersion;}
+    inline bool isDaemonize() {return m_bDaemonize;}
+
+private:
+    bool m_bValidParameter;
+    bool m_bShowHelp;
+    bool m_bShowVersion;
+    bool m_bDaemonize;
+    std::string *m_sProgramName;
+    std::string *m_sPidFile;
+    std::string *m_sCfgFile;
+
+    static CmdlineParameter *s_pCmdlineParameter;
+};
 
 }  // namespace openrtp
 
-#endif  // SRC_MAIN_H
+#endif  // SRC_EXAMPLE_CMDLINE_PARAMETER_H
 
