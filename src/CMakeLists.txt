@@ -31,10 +31,12 @@ add_subdirectory(util)
 
 
 # openrtp library
+include_directories(${PROJECT_SOURCE_DIR}/src/util)
+link_directories(${PROJECT_SOURCE_DIR}/src/util)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 link_directories(${PROJECT_SOURCE_DIR}/src)
-set(OPENRTP_FILES rtpheader.h rtpheader.cpp 
-        rtppacket.h rtppacket.cpp rtpsession.h rtpsession.cpp)
+file(GLOB UNIVERSAL_FILES *.h *.cpp)
+set(OPENRTP_FILES ${UNIVERSAL_FILES})
 add_library(openrtp SHARED ${OPENRTP_FILES})
 set_target_properties(openrtp PROPERTIES OUTPUT_NAME "openrtp")
 target_link_libraries(openrtp util)

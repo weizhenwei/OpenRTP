@@ -1,8 +1,8 @@
 /*
  ============================================================================
- * Name        : rtpsession.h
+ * Name        : rtcppacket.h
  * Author      : weizhenwei, <weizhenwei1988@gmail.com>
- * Date        : 2016.10.04
+ * Date        : 2016.10.06
  *
  * Copyright   :
  * Copyright (c) 2016, weizhenwei
@@ -33,42 +33,27 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Description : header file of rtpsession.h
+ * Description : header file of rtcppacket.h
  ============================================================================
  */
 
-#ifndef SRC_RTPSESSION_H
-#define SRC_RTPSESSION_H
+#ifndef SRC_RTCPPACKET_H
+#define SRC_RTCPPACKET_H
 
-#include <vector>
-
-#include "rtppacket.h"
-#include "rtcppacket.h"
-#include "thread/rtp_thread.h"
-#include "thread/rtp_thread_mutex.h"
+#include <stdint.h>
 
 namespace openrtp {
 
-class RtpSession {
+class RtcpPacket {
 public:
-    RtpSession();
-    ~RtpSession();
-
-    // APIs;
-    void InsertRtpPacket(const RtpPacket& rtppacket);
-    void InsertRtcpPacket(const RtcpPacket& rtppacket);
+    RtcpPacket();
+    ~RtcpPacket();
 
 private:
-    RtpThreadMutex m_mtxRtpMutex;
-    RtpThread *m_pRtpThread;
-    RtpThreadMutex m_mtxRtcpMutex;
-    RtpThread *m_pRtcpThread;
-
-    std::vector<RtpPacket> m_vRtpPackets;
-    std::vector<RtcpPacket> m_vRtcpPackets;
+    uint8_t *m_pRtcpHeader;
 };
 
 }  // namespace openrtp
 
-#endif  // SRC_RTPSESSION_H
+#endif  // SRC_RTCPPACKET_H
 

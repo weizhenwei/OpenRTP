@@ -39,8 +39,33 @@
 
 #include "rtpsession.h"
 
+#include <vector>
+
 namespace openrtp {
 
+RtpSession::RtpSession() : m_mtxRtpMutex(RtpThreadMutex()),
+    m_pRtpThread(nullptr), m_mtxRtcpMutex(RtpThreadMutex()),
+    m_pRtcpThread(nullptr), m_vRtpPackets(std::vector<RtpPacket>()),
+    m_vRtcpPackets(std::vector<RtcpPacket>()) {
+}
+
+RtpSession::~RtpSession() {
+    m_vRtpPackets.clear();
+    m_vRtcpPackets.clear();
+}
+
+
+void RtpSession::InsertRtpPacket(const RtpPacket& rtppacket) {
+    m_mtxRtpMutex.Lock();
+    m_vRtpPackets.push_back(rtppacket);
+    m_mtxRtpMutex.Unlock();
+}
+
+void RtpSession::InsertRtcpPacket(const RtcpPacket& rtcppacket) {
+    m_mtxRtcpMutex.Lock();
+    m_vRtcpPackets.push_back(rtcppacket);
+    m_mtxRtcpMutex.Unlock();
+}
 
 }  // namespace openrtp
 
