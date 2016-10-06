@@ -1,4 +1,4 @@
-prefix=/Users/weizhenwei/softwares/OpenRTP/vendor/glog/src-code/build/install
+prefix=/Users/weizhenwei/softwares/OpenRTP/vendor/glog/src-code/glog-0.3.4/../../mac-x86_64
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
