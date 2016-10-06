@@ -129,27 +129,14 @@ typedef unsigned __int64 uint64;
 #ifndef GOOGLE_PREDICT_BRANCH_NOT_TAKEN
 #if 1
 #define GOOGLE_PREDICT_BRANCH_NOT_TAKEN(x) (__builtin_expect(x, 0))
-#else
-#define GOOGLE_PREDICT_BRANCH_NOT_TAKEN(x) x
-#endif
-#endif
-
-#ifndef GOOGLE_PREDICT_FALSE
-#if 1
 #define GOOGLE_PREDICT_FALSE(x) (__builtin_expect(x, 0))
-#else
-#define GOOGLE_PREDICT_FALSE(x) x
-#endif
-#endif
-
-#ifndef GOOGLE_PREDICT_TRUE
-#if 1
 #define GOOGLE_PREDICT_TRUE(x) (__builtin_expect(!!(x), 1))
 #else
+#define GOOGLE_PREDICT_BRANCH_NOT_TAKEN(x) x
+#define GOOGLE_PREDICT_FALSE(x) x
 #define GOOGLE_PREDICT_TRUE(x) x
 #endif
 #endif
-
 
 // Make a bunch of macros for logging.  The way to log things is to stream
 // things to LOG(<a particular severity level>).  E.g.,
@@ -555,7 +542,7 @@ class LogSink;  // defined below
 //   vector<string> *outvec;
 // The cast is to disambiguate NULL arguments.
 #define LOG_STRING(severity, outvec) \
-  LOG_TO_STRING_##severity(static_cast<std::vector<std::string>*>(outvec)).stream()
+  LOG_TO_STRING_##severity(static_cast<vector<string>*>(outvec)).stream()
 
 #define LOG_IF(severity, condition) \
   !(condition) ? (void) 0 : google::LogMessageVoidify() & LOG(severity)
@@ -723,10 +710,10 @@ DEFINE_CHECK_OP_IMPL(Check_GT, > )
 // to reduce the overhead of CHECK statments by 2x.
 // Real DCHECK-heavy tests have seen 1.5x speedups.
 
-// The meaning of "string" might be different between now and
+// The meaning of "string" might be different between now and 
 // when this macro gets invoked (e.g., if someone is experimenting
 // with other string implementations that get defined after this
-// file is included).  Save the current meaning now and use it
+// file is included).  Save the current meaning now and use it 
 // in the macro.
 typedef std::string _Check_string;
 #define CHECK_OP_LOG(name, op, val1, val2, log)                         \
