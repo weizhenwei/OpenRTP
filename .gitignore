@@ -29,9 +29,9 @@
 # *.app
 
 # build-system files
-build/cmdline/*
-build/eclipse/*
-build/xcode/*
+# build/cmdline/*
+# build/eclipse/*
+# build/xcode/*
 
 # mac backup file
 .DS_Store
